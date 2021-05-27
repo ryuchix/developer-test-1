@@ -78,6 +78,30 @@ const routes = [
     props: true,
     component: () =>
       import(/* webpackChunkName: "verify" */ "../views/Pages/EditComment.vue")
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    beforeEnter: auth,
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "verify" */ "../views/Pages/Profile.vue")
+  },
+  {
+    path: "/profile/:id",
+    name: "UserProfile",
+    beforeEnter: auth,
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "verify" */ "../views/Pages/UserProfile.vue")
+  },
+  {
+    path: "/profile/:userid/edit",
+    name: "EditUserProfile",
+    beforeEnter: auth,
+    props: true,
+    component: () =>
+      import(/* webpackChunkName: "verify" */ "../views/Pages/EditUserProfile.vue")
   }
 ];
 

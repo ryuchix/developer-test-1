@@ -36,11 +36,15 @@ Route::group(['middleware' => ['auth:api']], function () {
 
     Route::post('update-post/{id}', 'PostController@update')->name('update.post');
 
+    Route::post('delete-post/{id}', 'PostController@destroy')->name('post.destroy');
+
     Route::post('add-comment', 'CommentController@store')->name('comment.store');
 
     Route::get('comment/{id}', 'CommentController@show')->name('edit.comment');
 
     Route::post('update-comment/{id}', 'CommentController@update')->name('update.comment');
+
+    Route::post('delete-comment/{id}', 'CommentController@destroy')->name('comment.destroy');
 
 
 });

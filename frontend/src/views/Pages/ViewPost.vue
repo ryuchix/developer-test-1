@@ -93,14 +93,14 @@ export default {
   },
 
   methods: {
-    ...mapActions("auth", ["getPost", "addComment"]),
+    ...mapActions("auth", ["getPost", "addComment", "removeComment", "removePost"]),
 
     editPost(id) {
       return this.$router.push({name: 'EditPost', params: {postid: id}});
     },
 
     deletePost(id) {
-      return this.$router.push({name: 'EditPost', params: {postid: id}});
+      this.removePost(id).then(() => this.$router.push({name: 'Home'}));
     },
 
     viewPost(id) {
@@ -118,7 +118,7 @@ export default {
     },
 
     deleteComment(id) {
-      return this.$router.push({name: 'EditComment', params: {commentid: id}});
+      this.removeComment(id).then(() => this.getPost(this.postid));
     },
   }
 };

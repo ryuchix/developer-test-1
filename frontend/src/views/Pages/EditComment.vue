@@ -40,7 +40,7 @@ export default {
     ...mapActions("auth", ["getComment", "updateComment"]),
 
     update() {
-        this.updateComment(this.comment).then(() => this.$router.push({name: 'ViewPost', params: {postid: this.postid}}));
+      this.updateComment(this.comment).then(() => this.$router.push({name: 'ViewPost', params: {postid: this.postid}}));
     }
   }
 };

@@ -68,7 +68,7 @@ export default {
   },
 
   methods: {
-    ...mapActions("auth", ["getPosts"]),
+    ...mapActions("auth", ["getPosts", "removePost"]),
 
     addPost() {
       return this.$router.push({name: 'AddPost'});
@@ -79,7 +79,7 @@ export default {
     },
 
     deletePost(id) {
-      return this.$router.push({name: 'EditPost', params: {postid: id}});
+      this.removePost(id).then(() => this.getPosts());
     },
 
     viewPost(id) {

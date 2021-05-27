@@ -102,6 +102,10 @@ export default {
       commit("setErrors", {}, { root: true });
       return axios.post(constant.url + "update-post/" + data.id, data)
     },
+    removePost({ commit }, data) {
+      commit("setErrors", {}, { root: true });
+      return axios.post(constant.url + "delete-post/" + data)
+    },
     // comments
     addComment({ commit }, data) {
       commit("setErrors", {}, { root: true });
@@ -117,6 +121,10 @@ export default {
         .then(response => {
           commit("setComment", response.data);
         })
+    },
+    removeComment({ commit }, data) {
+      commit("setErrors", {}, { root: true });
+      return axios.post(constant.url + "delete-comment/" + data)
     },
   }
 };

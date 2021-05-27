@@ -107,6 +107,10 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::where('id', $id)->delete();
+
+        return response()->json([
+            'message'  => 'Success'
+        ]);
     }
 }
