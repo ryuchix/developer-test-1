@@ -8,14 +8,16 @@ export default {
     userData: null,
     posts: null,
     post: null,
-    comment: null
+    comment: null,
+    profile: null
   },
 
   getters: {
     user: state     => state.userData,
     posts: state    => state.posts,
     post: state     => state.post,
-    comment: state  => state.comment
+    comment: state  => state.comment,
+    profile: state  => state.profile
   },
 
   mutations: {
@@ -30,6 +32,9 @@ export default {
     },
     setComment(state, comment) {
       state.comment = comment;
+    },
+    setProfile(state, profile) {
+      state.profile = profile;
     }
   },
 
@@ -44,6 +49,10 @@ export default {
         .catch(() => {
           localStorage.removeItem("authToken");
         });
+    },
+    updateUser({ commit }, data) {
+      commit("setErrors", {}, { root: true });
+      return axios.post(constant.url + "update-user/" + data.id, data)
     },
     sendLoginRequest({ commit }, data) {
       commit("setErrors", {}, { root: true });
@@ -78,6 +87,13 @@ export default {
         .then(() => {
           dispatch("getUserData");
         });
+    },
+    getProfile({ commit }, id) {
+      axios
+        .get(constant.url + "profile/" + id)
+        .then(response => {
+          commit("setProfile", response.data);
+        })
     },
     // posts
     addPost({ commit }, data) {

@@ -88,7 +88,7 @@ const routes = [
       import(/* webpackChunkName: "verify" */ "../views/Pages/Profile.vue")
   },
   {
-    path: "/profile/:id",
+    path: "/profile/:userid",
     name: "UserProfile",
     beforeEnter: auth,
     props: true,

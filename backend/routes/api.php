@@ -24,7 +24,13 @@ Route::group(['middleware' => ['auth:api']], function () {
 
     Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
-    Route::get('user', 'Auth\AuthenticationController@user')->name('user');
+    Route::get('user', 'ProfileController@user')->name('user');
+
+    Route::post('update-user/{id}', 'ProfileController@updateUser')->name('update.user');
+
+    Route::post('update-profile/{id}', 'ProfileController@update')->name('update.profile');
+
+    Route::get('profile/{id}', 'ProfileController@show')->name('show.profile');
 
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 

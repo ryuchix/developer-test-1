@@ -16,4 +16,9 @@ class Profile extends Model
     {
       return $this->belongsTo('App\User');
     }
+
+    public function getImageAttribute($value)
+    {
+      return $value != null ? asset('/images/'.$value) : null;
+    }
 }

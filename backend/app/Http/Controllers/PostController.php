@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use Auth;
+use App\User;
+use App\Profile;
 
 class PostController extends Controller
 {
@@ -15,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('comments')->orderBy('created_at', 'desc')->get();
+        $posts = Post::with('comments', 'user:id,name')->orderBy('created_at', 'desc')->get();
         foreach ($posts as $post) {
             $post['user_post'] = $post->user_id == Auth::user()->id;
         }
@@ -64,10 +66,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::with('comments')->where('id', $id)->first();
+        $post = Post::with('comments', 'user:id,name')->where('id', $id)->first();
         $post['user_post'] = $post->user_id == Auth::user()->id;
         foreach ($post['comments'] as $comment) {
             $comment['user_comment'] = $comment->user_id == Auth::user()->id;
+            $comment['user'] = $comment->user;
         }
         return $post;
     }

@@ -17,7 +17,7 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "EditPost",
+  name: "EditComment",
 
   data() {
     return {

@@ -1,38 +1,38 @@
 <template>
     <div class="flex items-center h-screen w-full justify-center">
 
-    <div class="max-w-xs">
+    <div class="max-w-lg">
         <div class="bg-white shadow-xl rounded-lg py-3 relative">
             <div class="photo-wrapper p-2">
-                <img class="w-32 h-32 rounded-full mx-auto" src="https://www.gravatar.com/avatar/2acfb745ecf9d4dccb3364752d17f65f?s=260&d=mp" alt="John Doe">
+                <img class="w-32 h-32 rounded-full mx-auto" v-if="user.profile.image != null" :src="user.profile.image" alt="John Doe">
             </div>
             <div class="p-2">
-                <h3 class="text-center text-xl text-gray-900 font-medium leading-8">Randy Corpuz</h3>
+                <h3 class="text-center text-xl text-gray-900 font-medium leading-8">{{ user.name }}</h3>
                 <table class="text-xs my-3">
                     <tbody>
                         <tr>
                             <td class="px-2 py-2 text-gray-500 font-semibold">Phone number</td>
-                            <td class="px-2 py-2">+639174128392</td>
+                            <td class="px-2 py-2">{{ user.profile.phone }}</td>
                         </tr>
                         <tr>
                             <td class="px-2 py-2 text-gray-500 font-semibold">Mobile number</td>
-                            <td class="px-2 py-2">+639174128392</td>
+                            <td class="px-2 py-2">{{ user.profile.mobile }}</td>
                         </tr>
                         <tr>
                             <td class="px-2 py-2 text-gray-500 font-semibold">Address</td>
-                            <td class="px-2 py-2">Orchid Hills subdivision</td>
+                            <td class="px-2 py-2">{{ user.profile.address }}</td>
                         </tr>
                         <tr>
                             <td class="px-2 py-2 text-gray-500 font-semibold">City</td>
-                            <td class="px-2 py-2">Davao City</td>
+                            <td class="px-2 py-2">{{ user.profile.city }}</td>
                         </tr>
                         <tr>
                             <td class="px-2 py-2 text-gray-500 font-semibold">State</td>
-                            <td class="px-2 py-2">Davao del sur</td>
+                            <td class="px-2 py-2">{{ user.profile.state }}</td>
                         </tr>
                         <tr>
                             <td class="px-2 py-2 text-gray-500 font-semibold">Zip</td>
-                            <td class="px-2 py-2">8000</td>
+                            <td class="px-2 py-2">{{ user.profile.zip }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -52,7 +52,7 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: "Home",
+  name: "Profile",
 
   data() {
     return {

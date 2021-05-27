@@ -14,6 +14,13 @@
       <div v-for="(post, index) in posts" :key="index" class="flex flex-col space-y-8">
         <div class="relative post rounded overflow-hidden shadow-lg my-2 hover:shadow-xl w-96">
           <div class="px-6 py-4 mt-2">
+            <div class="flex flex-row items-center space-x-3 mb-4">
+              <div class="img">
+                <img class="rounded-full w-10 h-10" v-if="post.user.image != null" :src="post.user.image" alt="Avatar">
+              </div>
+              <router-link :to="{name: 'UserProfile', params: {userid: post.user_id}}" class="name cursor-pointer">{{ post.user.name }}
+              </router-link>
+            </div>
             <div class="font-bold text-xl mb-2 cursor-pointer" @click="viewPost(post.id)" >{{ post.title }}</div>
             <p class="text-grey-darker text-base">
               {{ post.body }}

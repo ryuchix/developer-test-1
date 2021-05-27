@@ -10,6 +10,7 @@ __Back-end__
 - Run __composer install__
 - Run __php artisan key:generate__
 - Run __php artisan passport:install__
+- For storing file be sure to run __php artisan storage:link__
 
 
 __Front-end__
