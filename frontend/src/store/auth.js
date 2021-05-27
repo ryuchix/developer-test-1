@@ -73,7 +73,7 @@ export default {
         });
     },
     sendLogoutRequest({ commit }) {
-      axios.post(constant.url + "logout").then(() => {
+      return axios.post(constant.url + "logout").then(() => {
         commit("setUserData", null);
         localStorage.removeItem("authToken");
       });

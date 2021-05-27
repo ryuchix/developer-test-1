@@ -37,8 +37,8 @@ export default {
     ...mapActions("auth", ["sendLogoutRequest", "getUserData"]),
 
     logout() {
-      this.sendLogoutRequest();
-      this.$router.push("/");
+      this.sendLogoutRequest().then(() => this.$router.push('/login'));
+      
     }
   }
 };
